@@ -1,6 +1,7 @@
 <?php
 include 'Registro.php';
 error_reporting(0);
+
 $data = array( 
   $_POST['ID'], 
   $_POST['FECHA'], 

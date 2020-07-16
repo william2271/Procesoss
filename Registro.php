@@ -1,4 +1,6 @@
+<script>
 
+    </script>
 
 
 <?php 
@@ -39,7 +41,7 @@ error_reporting(0);
                     
               <input type = "text" id = "Descripcion" name = "Descripcion" hidden />
                     
-              <input type = "submit" class="btn btn-outline-warning" name = "submit" value = "Agregar">  
+              <input type = "submit" class="btn btn-outline-warning" onclick= aumentar(); name = "submit" value = "Agregar">  
           </form>  
 
 
@@ -49,15 +51,21 @@ error_reporting(0);
  <script src="//code.jquery.com/jquery-latest.min.js"></script>
 <script src="//norfipc.com/js/jquery.cookie.js"></script>
 <script src="//norfipc.com/js/cookiecompliance.js"></script>
-
-
-<script>
+ <script>
 document.getElementById("Descripcion").value = "Guardado";
+var yo=3;
+function aumentar(){
 
-document.getElementById("ID").value = 3;
-console.log(document.getElementById("ID").value);
+
+    
+yo++
+    
+    document.getElementById("ID").value = yo;
+;
+}
 
 </script>
+
 
 <?php 
 
@@ -68,7 +76,10 @@ define('CSV', '100Records.csv');
 $readCsv = array_map('str_getcsv', file(CSV)); 
 ?> 
 
- <table class="table table-dark" border="1"> 
+ <table class="table table-dark" border="1">
+
+
+
  <?php 
  
  foreach ($readCsv as $itemCsv) { 
@@ -87,9 +98,18 @@ $readCsv = array_map('str_getcsv', file(CSV));
  <?php
  
 ?>
+<div> 
 <a href="100Records.csv">Descargar csv.</a>
 
-
+<form action = "convertir.php" onsubmit=location.reload() method = "post">  
+           
+              <input type = "submit" class="btn btn-danger" name = "submit" value = "Convertir a json">  
+          </form>  
+          <form action = "serial.php" onsubmit=location.reload() method = "post">  
+           
+              <input type = "submit" class="btn btn-primary" name = "submit" value = "Convertir a Serializacion">  
+          </form>  
+</div>
 <h4>Aqui abajo vemos la informacion de un json:</h4>
 
 <?php 
@@ -119,17 +139,9 @@ $readJSON = array_map('str_getcsv', file(JSONlocal));
   ?> 
  </table> 
  <a href="json.json">Descargar json.</a>
-<?php
- $csv = serialize($readCsv); 
-  $json = serialize($readJSON);
-  
-
-?>
-
-
 
 <script>
-if (window.history.replaceState) { // verificamos disponibilidad
+if (window.history.replaceState) { 
     window.history.replaceState(null, null, window.location.href);
 }
 </script>
