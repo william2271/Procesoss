@@ -1,53 +1,9 @@
 
- 
-
-
-
-
-  <?php
-     $nombre= array("william");
-$apellido= array("quezada");
-$estatus= array("activo");
-$carrera= array("Software");
-$favorito = array("matematicas");
-  ?>
-  
 
 <?php 
 
 error_reporting(0);
 
-require_once 'cosas.php';
-
-
-?>
-
-<?php
-
-$crip5 = serialize($favorito);
-  setcookie("migalletas",$crip5 ,time()+86400*365); 
-  $devolver5 = unserialize($_COOKIE['migalletas']);
-  
-$crip6 = serialize($imagen);
-setcookie("migalletass",$crip6 ,time()+86400*365); 
-$devolver6 = unserialize($_COOKIE['migalletass']);
-
-
-$crip = serialize($nombre);
-  setcookie("migalleta",$crip ,time()+86400*365); 
-  $devolver = unserialize($_COOKIE['migalleta']);
-
-$crip2 = serialize($apellido);
-  setcookie("mi",$crip2 ,time()+86400*365); 
-  $devolver2 = unserialize($_COOKIE['mi']);
-
-$crip3 = serialize($estatus);
-  setcookie("miga",$crip3 ,time()+86400*365); 
-  $devolver3 = unserialize($_COOKIE['miga']);
-
-$crip4 = serialize($carrera);
-  setcookie("migalle",$crip4 ,time()+86400*365); 
-  $devolver4 = unserialize($_COOKIE['migalle']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,15 +21,26 @@ $crip4 = serialize($carrera);
 
 <body style="background-color:grey;">
 
+<form action = "cosas.php" onsubmit=location.reload() method = "post">  
+              
+              ID: <input type = "text" name = "ID" disabled=»disabled» />  
+                        
+              <br><br>  
+                    
+              FECHA: <input type = "text" name = "FECHA" disabled=»disabled» />  
+                        
+              <br><br> 
+                    
+              MONTO: <input type = "text" name = "Monto" />  
+              <br><br> 
+                    
+              DESCRIPCION:<input type = "text" name = "Descripcion" />
+                    
+              <input type = "submit" name = "submit" value = "Submit">  
+          </form>  
+
 
 <h4>En la tabla de abajo se visualiza la informacion de un csv:</h4>
-
-
-  
- 
-
-
-
 
  </script>
  <script src="//code.jquery.com/jquery-latest.min.js"></script>
@@ -108,8 +75,9 @@ $readCsv = array_map('str_getcsv', file(CSV));
    } 
   ?> 
  </table> 
-
-
+ <?php
+ 
+?>
 <a href="100Records.csv">Descargar csv.</a>
 
 
@@ -148,6 +116,15 @@ $readJSON = array_map('str_getcsv', file(JSONlocal));
   
 
 ?>
+
+
+<h4> Aqui selecciona la un csv or json:</h4>
+
+<script>
+if (window.history.replaceState) { // verificamos disponibilidad
+    window.history.replaceState(null, null, window.location.href);
+}
+</script>
 <style>
     .md-18{
         font-size: 18px;
