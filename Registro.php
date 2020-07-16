@@ -1,5 +1,6 @@
 
 
+
 <?php 
 
 error_reporting(0);
@@ -19,36 +20,44 @@ error_reporting(0);
 
 </head>
 
+
 <body style="background-color:grey;">
+
 
 <form action = "cosas.php" onsubmit=location.reload() method = "post">  
               
-              ID: <input type = "text" name = "ID" disabled=»disabled» />  
+               <input type = "text" id="ID" name = "ID" hidden />  
                         
               <br><br>  
                     
-              FECHA: <input type = "text" name = "FECHA" disabled=»disabled» />  
+               <input type = "text" id="Fecha" name = "FECHA" value="<?php  echo date("d-m-Y\ h:i:s");?> " hidden />  
                         
               <br><br> 
                     
               MONTO: <input type = "text" name = "Monto" />  
               <br><br> 
                     
-              DESCRIPCION:<input type = "text" name = "Descripcion" />
+              <input type = "text" id = "Descripcion" name = "Descripcion" hidden />
                     
-              <input type = "submit" name = "submit" value = "Submit">  
+              <input type = "submit" class="btn btn-outline-warning" name = "submit" value = "Agregar">  
           </form>  
 
 
 <h4>En la tabla de abajo se visualiza la informacion de un csv:</h4>
 
- </script>
+ 
  <script src="//code.jquery.com/jquery-latest.min.js"></script>
 <script src="//norfipc.com/js/jquery.cookie.js"></script>
 <script src="//norfipc.com/js/cookiecompliance.js"></script>
 
 
+<script>
+document.getElementById("Descripcion").value = "Guardado";
 
+document.getElementById("ID").value = 3;
+console.log(document.getElementById("ID").value);
+
+</script>
 
 <?php 
 
@@ -118,7 +127,6 @@ $readJSON = array_map('str_getcsv', file(JSONlocal));
 ?>
 
 
-<h4> Aqui selecciona la un csv or json:</h4>
 
 <script>
 if (window.history.replaceState) { // verificamos disponibilidad
